@@ -1,3 +1,5 @@
+github.com/The-EpaG/EasyHttpClient v0.0.0-20250322165708-f353c2e27939 h1:M3sfpTH+cNKQC0q1cclye/5DOh3SsTmX2ra4zDS5koE=
+github.com/The-EpaG/EasyHttpClient v0.0.0-20250322165708-f353c2e27939/go.mod h1:DqLuNZiFw0uGGIjzlQoYqyxirTiJHLyZoFRqt9uNuD8=
 github.com/bitfield/gotestdox v0.2.2 h1:x6RcPAbBbErKLnapz1QeAlf3ospg8efBsedU93CDsnE=
 github.com/bitfield/gotestdox v0.2.2/go.mod h1:D+gwtS0urjBrzguAkTM2wodsTQYFHdpx8eqRJ3N+9pY=
 github.com/bytedance/sonic v1.11.6 h1:oUp34TzMlL+OY1OUWxHqsdkgC/Zfc85zGqw9siXjrc0=

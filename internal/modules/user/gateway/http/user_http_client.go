@@ -1,9 +1,9 @@
 package http
 
 import (
-	"github.com/The-EpaG/Go-BasicServer/pkg/http"
+	easyhttpclient "github.com/The-EpaG/EasyHttpClient"
 )
 
 type UserHttpClient interface {
-	http.HttpClient
+	easyhttpclient.HttpClient
 }

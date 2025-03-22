@@ -23,7 +23,7 @@ func NewUserGatewayImpl(userHttpClient UserHttp.UserHttpClient) UserGateway {
 }
 
 func (gateway *UserGatewayImpl) FindAll(ctx context.Context) ([]models.User, error) {
-	body, err := gateway.userHttpClient.Get(ctx, "/users?page=2")
+	body, err := gateway.userHttpClient.Get("/users?page=2")
 
 	if err != nil {
 		return nil, exceptions.ErrUserExternalService

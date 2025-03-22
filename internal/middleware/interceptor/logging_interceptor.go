@@ -9,7 +9,9 @@ import (
 	"github.com/The-EpaG/Go-BasicServer/pkg/logging"
 )
 
-func LoggingRequestInterceptor(req *http.Request) (*http.Request, error) {
+type LoggingRequestInterceptor struct {}
+
+func (i *LoggingRequestInterceptor) Intercept(req *http.Request) (*http.Request, error) {
 	var requestBody []byte
 	if req.Body != nil {
 		requestBody, _ = io.ReadAll(req.Body)
@@ -21,7 +23,13 @@ func LoggingRequestInterceptor(req *http.Request) (*http.Request, error) {
 	return req, nil
 }
 
-func LoggingResponseInterceptor(resp *http.Response) (*http.Response, error) {
+func NewLoggingRequestInterceptor() *LoggingRequestInterceptor {
+	return &LoggingRequestInterceptor{}
+}
+
+type LoggingResponseInterceptor struct {}
+
+func (i *LoggingResponseInterceptor) Intercept(resp *http.Response) (*http.Response, error) {
 	var responseBody []byte
 	if resp.Body != nil {
 		responseBody, _ = io.ReadAll(resp.Body)
@@ -31,4 +39,8 @@ func LoggingResponseInterceptor(resp *http.Response) (*http.Response, error) {
 	logging.Info(context.Background(), "Client Received Response Payload: "+string(responseBody))
 
 	return resp, nil
+}
+
+func NewLoggingResponseInterceptor() *LoggingResponseInterceptor {
+	return &LoggingResponseInterceptor{}
 }
