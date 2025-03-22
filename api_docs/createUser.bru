@@ -1,0 +1,21 @@
+meta {
+  name: createUser
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{host}}/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "mark",
+    "name": "Marco",
+    "surname": "P",
+    "email": "mark@email.it",
+    "password": "password"
+  }
+}

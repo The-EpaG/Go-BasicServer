@@ -1,0 +1,16 @@
+app:
+  version: "1.0.0"
+  name: "hastega starterkit"
+  debug: true
+  env: test
+
+server:
+  host: "localhost"
+  port: "9069"
+
+db:
+  driver: "sqlite"
+  path: ":memory:"
+
+extservice:
+  baseurl: "https://reqres.in/api"

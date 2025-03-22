@@ -1,0 +1,64 @@
+include:
+  - project: hastega/technology-testing/devops/ci.cd
+    ref: Go
+    file: templates/pipelines/security/SAST.gitlab-ci.yml
+  - project: hastega/technology-testing/devops/ci.cd
+    ref: Go
+    file: templates/job/languages/Go.gitlab-ci.yml
+  - project: hastega/technology-testing/devops/ci.cd
+    ref: Go
+    file: templates/pipelines/version/increase_version/Go.gitlab-ci.yml
+
+variables:
+  STAGING_BRANCH: "develop"
+  PROD_BRANCH: "master"
+  RELEASE_BRANCH_REGEX: "/^release/"
+  ARTIFACTS: "dist"
+
+get_project_version:
+  extends: .get_project_version_no_increase_version
+
+lint:
+  extends: .lint_no_increase_version
+  needs:
+    - job: get_project_version
+
+build_staging:
+  extends: .build_staging
+  needs:
+    - job: get_project_version
+    - job: lint
+      optional: true
+
+build_production:
+  extends: .build_production
+  needs:
+    - job: get_project_version
+    - job: lint
+      optional: true
+
+unit_test_staging:
+  extends: .unit_test_staging
+  needs:
+    - job: get_project_version
+    - job: lint
+      optional: true
+
+unit_test_production:
+  extends: .unit_test_production
+  needs:
+    - job: get_project_version
+    - job: lint
+      optional: true
+
+deploy_staging:
+  extends: .deploy_GCP_staging
+  environment: staging
+  rules:
+    - !reference [.deploy_staging_rules, rules]
+
+deploy_production:
+  extends: .deploy_GCP_production
+  environment: production
+  rules:
+    - !reference [.deploy_production_rules, rules]

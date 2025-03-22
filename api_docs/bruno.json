@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Backend SK Go",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

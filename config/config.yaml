@@ -1,0 +1,7 @@
+##################################
+# ONLY PUBLIC AND DEFAULT VALUES #
+##################################
+
+app:
+  version: "1.0.0"
+  name: "hastega starterkit"

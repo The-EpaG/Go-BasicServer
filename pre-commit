@@ -1,0 +1,17 @@
+#!/bin/sh
+echo "Running git pre-commit hook"
+
+# stash any unstaged changes
+git stash --keep-index
+
+# run pre-commit checks
+./bin/golangci-lint run pkg/... cmd/... internal/...
+
+# store the last exit code in a variable
+RESULT=$?
+
+# unstash the unstashed changes
+git stash pop
+
+# return the exit code
+exit $RESULT
